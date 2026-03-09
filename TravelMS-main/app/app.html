@@ -1,0 +1,22 @@
+@if (auth.isLoggedIn) {
+  <nav>
+    <span class="brand">TravelMS</span>
+
+    @if (auth.isAdmin) {
+      <a routerLink="/users" routerLinkActive="active">Users</a>
+    }
+    <a routerLink="/trips" routerLinkActive="active">Trips</a>
+    <a routerLink="/expenses" routerLinkActive="active">Expenses</a>
+    <a routerLink="/reports" routerLinkActive="active">Reports</a>
+
+    <div class="nav-right">
+      <span class="nav-user">
+        {{ auth.user?.first_name }} {{ auth.user?.last_name }}
+        <span class="nav-role">{{ auth.user?.role }}</span>
+      </span>
+      <button class="nav-logout" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+}
+
+<router-outlet />
